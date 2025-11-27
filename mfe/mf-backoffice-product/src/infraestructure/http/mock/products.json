@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "code": "P001",
+    "description": "Descripción de prueba",
+    "brand": {"id": 1, "name": "Visa"},
+    "payment_method": {"id": 1, "name": "Tarjeta"},
+    "payment_type": {"id": 2, "name": "Crédito"},
+    "currency": {"id": 1, "code": "ARS"},
+    "financing_type": {"id": 1, "name": "Cuotas"},
+    "card_scope": {"id": 1, "name": "Nacional"},
+    "capture_method": {"id": 1, "name": "Online"},
+    "date_created_at": "2025-11-25T10:00:00Z",
+    "date_end_at": null
+  },
+    {
+    "id": 1,
+    "code": "P002",
+    "description": "Descripción de prueba",
+    "brand": {"id": 1, "name": "Visa"},
+    "payment_method": {"id": 1, "name": "Tarjeta"},
+    "payment_type": {"id": 2, "name": "Crédito"},
+    "currency": {"id": 1, "code": "ARS"},
+    "financing_type": {"id": 1, "name": "Cuotas"},
+    "card_scope": {"id": 1, "name": "Nacional"},
+    "capture_method": {"id": 1, "name": "Online"},
+    "date_created_at": "2025-11-25T10:00:00Z",
+    "date_end_at": null
+  },
+    {
+    "id": 1,
+    "code": "P003",
+    "description": "Descripción de prueba",
+    "brand": {"id": 2, "name": "Mastercard"},
+    "payment_method": {"id": 1, "name": "Tarjeta"},
+    "payment_type": {"id": 2, "name": "Crédito"},
+    "currency": {"id": 1, "code": "ARS"},
+    "financing_type": {"id": 1, "name": "Cuotas"},
+    "card_scope": {"id": 1, "name": "Nacional"},
+    "capture_method": {"id": 1, "name": "Online"},
+    "date_created_at": "2025-11-25T10:00:00Z",
+    "date_end_at": null
+  }
+]

@@ -1,0 +1,52 @@
+{
+  "name": "@link/root-config",
+  "scripts": {
+    "start": "webpack serve --port 9000 --env isLocal",
+    "start:styleguide": "npm start --prefix ../link-styleguide",
+    "start:security-module": "npm start --prefix ../security-module-link",
+    "start:login": "npm start --prefix ../mf-login-link",
+    "start:merchant": "npm start --prefix ../mf-merchants-link",
+    "start:menu": "npm start --prefix ../mf-menu-link",
+    "start:header": "npm start --prefix ../mf-header-link",
+    "start:all": "concurrently -n \"[STYLE],[SEC],[LOGIN],[MERCH],[MENU],[HEADER],[ROOT]\" -c \"cyan,magenta,yellow,green,blue,white,gray\" \"npm run start:styleguide && echo '[STYLE] READY on http://localhost:8080'\" \"wait-on http://localhost:8080 && npm run start:security-module && echo '[SEC] READY on http://localhost:8081'\" \"wait-on http://localhost:8081 && npm run start:login && echo '[LOGIN] READY on http://localhost:8082'\" \"wait-on http://localhost:8082 && npm run start:merchant && echo '[MERCH] READY on http://localhost:8083'\" \"wait-on http://localhost:8083 && npm run start:menu && echo '[MENU] READY on http://localhost:8084'\" \"wait-on http://localhost:8084 && npm run start:header && echo '[HEADER] READY on http://localhost:8085'\" \"wait-on http://localhost:8085 && npm start && echo '[ROOT] READY on http://localhost:9000'\"",
+    "lint": "eslint src --ext js",
+    "test": "cross-env BABEL_ENV=test jest --passWithNoTests",
+    "format": "prettier --write .",
+    "check-format": "prettier --check .",
+    "prepare": "husky install",
+    "build": "concurrently npm:build:*",
+    "build:webpack": "webpack --mode=production"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.23.3",
+    "@babel/eslint-parser": "^7.23.3",
+    "@babel/plugin-transform-runtime": "^7.23.3",
+    "@babel/preset-env": "^7.23.3",
+    "@babel/runtime": "^7.23.3",
+    "@types/jest": "^29.5.14",
+    "concurrently": "^6.5.1",
+    "cross-env": "^7.0.3",
+    "eslint": "^7.32.0",
+    "eslint-config-important-stuff": "^1.1.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^3.4.1",
+    "html-webpack-plugin": "^5.3.2",
+    "husky": "^7.0.2",
+    "jest": "^27.5.1",
+    "jest-cli": "^27.5.1",
+    "prettier": "^2.3.2",
+    "pretty-quick": "^3.1.1",
+    "serve": "^14.2.5",
+    "wait-on": "^9.0.1",
+    "webpack": "^5.89.0",
+    "webpack-cli": "^5.1.4",
+    "webpack-config-single-spa": "^6.0.2",
+    "webpack-dev-server": "^5.1.0",
+    "webpack-merge": "^6.0.1"
+  },
+  "dependencies": {
+    "@types/systemjs": "^6.15.3",
+    "single-spa": "^6.0.3",
+    "single-spa-layout": "^1.6.1"
+  }
+}

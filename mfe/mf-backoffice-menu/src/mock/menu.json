@@ -1,0 +1,43 @@
+[
+  {
+    "code": "inicio",
+    "label": "Inicio",
+    "description": "Inicio",
+    "link_url": "/inicio",
+    "icon_code": "START",
+    "sub_items": []
+  },
+  {
+    "code": "paquetes",
+    "label": "Paquetes",
+    "description": "Paquetes",
+    "link_url": "/bo/paquetes",
+    "icon_code": "SMS",
+    "sub_items": [
+      {
+        "code": "paquetes.nuevo",
+        "label": "Nuevo paquete",
+        "description": "nuevo",
+        "link_url": "/bo/paquetes/new",
+        "icon_code": "SMS",
+        "sub_items": []
+      },
+      {
+        "code": "paquetes.listado",
+        "label": "Mis paquetes",
+        "description": "listado",
+        "link_url": "/bo/paquetes/listado",
+        "icon_code": "SMS",
+        "sub_items": []
+      }
+    ]
+  },
+ {
+        "code": "productos",
+        "label": "Productos",
+        "description": "",
+        "link_url": "/bo/productos",
+        "icon_code": "SMS",
+        "sub_items": []
+      }
+]

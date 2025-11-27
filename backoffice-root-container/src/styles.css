@@ -1,0 +1,56 @@
+:root {
+    /** Spacing */
+    --spacing-xs: 4px;
+    --spacing-sm:  8px;
+    --spacing-md: 16px;
+    --spacing-lg: 12px 24px;
+    --spacing-xl: 16px 32px;
+
+    --space-1: 0.25rem; /* 4px */
+    --space-2: 0.5rem;  /* 8px */
+    --space-3: 0.75rem; /* 12px */
+    --space-4: 1rem;   /* 16px */
+    --space-5: 1.5rem; /* 24px */
+    --space-6: 2rem;   /* 32px */
+    --space-7: 3rem;   /* 48px */
+
+
+    /** Gaps */
+    --gap-0:0px;
+    --gap-1:2px;
+    --gap-2:4px;
+    --gap-3:8px;
+
+    /** Breakpoints */
+    --bp-sm: 480px;
+    --bp-md: 768px;
+    --bp-lg: 1024px;
+    --bp-xl: 1280px;
+
+    /** Radius */
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+}
+
+    /* Scrollbar para navegadores modernos */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f4f6fa;
+  border-radius: 8px;
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #c1c1c1 #f4f6fa;
+}
