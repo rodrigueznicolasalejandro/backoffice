@@ -5,7 +5,6 @@ import { httpClient } from "@infraestructure/config/httpClient";
 
 export class HttpProductsRepository implements ProductsRepository {
     async getProducts() {
-    
         const {data} = await httpClient.get<Product[]>('/products');
         return data.data;
     }
