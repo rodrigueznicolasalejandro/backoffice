@@ -14,13 +14,24 @@ const ViewProducts = ({ products }) => {
 };
 
 export const Products = () => {
-  const { products, loading } = useProducts();
+  const { products, loading, error } = useProducts();
+  console.log('Products Page Rendered', { products, loading, error });
 
   if (loading) {
     return (
       <Grid cols={1}>
         <Loader />
       </Grid>
+    );
+  }
+
+  if (error) {
+    return (
+      <MainLayout>
+        <Grid cols={1}>
+          <h1>Ups!</h1>
+        </Grid>
+      </MainLayout>
     );
   }
 

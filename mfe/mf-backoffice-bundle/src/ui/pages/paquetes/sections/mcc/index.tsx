@@ -9,12 +9,13 @@ import {
   TableContainer,
   TableBody,
 } from '@ui/components/Table';
+import { MainLayout } from '@ui/layout/main';
 import { useGetMcc } from '@ui/pages/paquetes/hooks/useGetMcc';
 
 const columns = ['Codigo', 'Descripción', 'Permite Propina'];
 
 export const TableMcc = () => {
-  const { mccs, loading } = useGetMcc();
+  const { mccs, loading, error } = useGetMcc();
   if (loading) {
     return (
       <Grid cols={1}>
@@ -23,6 +24,15 @@ export const TableMcc = () => {
     );
   }
 
+  if (error) {
+    return (
+      <MainLayout>
+        <Grid cols={1}>
+          <h1>Ups!</h1>
+        </Grid>
+      </MainLayout>
+    );
+  }
   return (
     <Card width="100%">
       <TableContainer>

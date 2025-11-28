@@ -10,11 +10,14 @@ interface UseParamsFetch<T>{
     labelError?: string;
 }
 export function useFetch<T>({fetchFn}: UseParamsFetch<T>) :UseFetchResult<T>{
-    const [data,setData] = useState<T | null>(null);
+    
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
-
+    const [data,setData] = useState<T | null>(null);
+    
     useEffect(() => {
+        const controller = new AbortController();
+        const {signal} = controller;
         let isMounted = true;
 
         async function load() {
@@ -23,6 +26,7 @@ export function useFetch<T>({fetchFn}: UseParamsFetch<T>) :UseFetchResult<T>{
                 if (isMounted) setData(result);                
             }
             catch (err) {
+                if(err.name === 'AbortError') return;
                 if (isMounted) setError("Error fetching data");
             }
             finally {
@@ -31,7 +35,7 @@ export function useFetch<T>({fetchFn}: UseParamsFetch<T>) :UseFetchResult<T>{
         }
         load();
 
-        return () => { isMounted = false; }
+        return () => { isMounted = false; controller.abort(); };
 
     }, [fetchFn]);
 
