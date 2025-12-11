@@ -1,6 +1,6 @@
 import { publicGet } from '@link/security-module';
 
-const baseURL = 'http://localhost:3500/api';
+const baseURL = 'http://localhost:3500/backoffice-bff/api';
 
 export const httpClient = {
    /**

@@ -5,7 +5,7 @@ export interface ProductV1 {
   brand: string;
   paymentType: string;
   paymentMethod: string;
-   currency: string;
+  currency: string;
   financeType: string;
   cardScope: string;
   captureMethod: string;

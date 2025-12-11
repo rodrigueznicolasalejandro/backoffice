@@ -4,8 +4,8 @@ import { httpClient } from "@infraestructure/config/httpClient";
 
 export class HttpBusinessSizeRepository implements BussinesSizeRepository {
     async getBusinessSizes() {
-        const url='/ms-bundles/api/v1/business-sizes';
+        const url='/v1/business-sizes';
         const {data} = await httpClient.public.get<BusinessSize[]>(url);
-        return data.data;
+        return data;
     }
 }

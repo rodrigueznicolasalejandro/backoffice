@@ -40,7 +40,8 @@ module.exports = (webpackConfigEnv, argv) => {
       proxy: [
         {
           context: ["/api"],
-          target: "https://bff-link.d.adq.redlink-aws",
+          // target: "https://bff-link.d.adq.redlink-aws",
+          target: "http://localhost:3500/backoffice-bff",
           changeOrigin: true,
           secure: false,
         },
