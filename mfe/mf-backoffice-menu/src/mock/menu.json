@@ -11,15 +11,15 @@
     "code": "servicios",
     "label": "Servicios",
     "description": "Servicios",
-    "link_url": "/bo/servicios",
+    "link_url": "/bo/services",
     "icon_code": "MdMiscellaneousServices",
     "sub_items": []
   },
   {
-    "code": "pricing",
+    "code": "prices",
     "label": "Pricing",
     "description": "Pricing",
-    "link_url": "/bo/pricing",
+    "link_url": "/bo/prices",
     "icon_code": "MdAttachMoney",
     "sub_items": []
   },
@@ -40,11 +40,11 @@
     "sub_items": []
   },
   {
-    "code": "paquetes",
-    "label": "Paquetes",
-    "description": "Paquetes",
-    "link_url": "/bo/paquetes",
-    "icon_code": "MdCardGiftcard",
+    "code": "pos",
+    "label": "POS",
+    "description": "POS",
+    "link_url": "/bo/pos",
+    "icon_code": "MdPointOfSale",
     "sub_items": []
   }
 ]

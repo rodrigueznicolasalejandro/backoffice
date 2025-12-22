@@ -5,7 +5,8 @@ import {
   MdAttachMoney,
   MdCategory,
   MdBusiness,
-  MdCardGiftcard
+  MdCardGiftcard,
+  MdPointOfSale
 } from 'react-icons/md';
 
 interface MenuItem {
@@ -28,7 +29,8 @@ const iconMap: { [key: string]: React.ComponentType<{ className?: string }> } = 
   MdAttachMoney,
   MdCategory,
   MdBusiness,
-  MdCardGiftcard
+  MdCardGiftcard,
+  MdPointOfSale
 };
 
 const MenuList: React.FC<MenuListProps> = ({ items, onNavigate }) => {

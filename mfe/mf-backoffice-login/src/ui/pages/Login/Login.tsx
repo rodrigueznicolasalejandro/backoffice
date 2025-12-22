@@ -26,7 +26,7 @@ const Login: React.FC = () => {
       localStorage.setItem('user', JSON.stringify(user));
       
       // Navigate to dashboard
-      window.location.href = '/bo/inicio';
+      window.location.href = '/bo/products';
     } catch (err: any) {
       setError(err.message || 'Login failed');
     } finally {

@@ -33,7 +33,7 @@ function isUserAuthenticated() {
 // Redirección basada en autenticación
 if (window.location.pathname === "/") {
   if (isUserAuthenticated()) {
-    window.location.replace("/bo/inicio");
+    window.location.replace("/bo/products");
   } else {
     window.location.replace("/auth");
   }
@@ -58,7 +58,7 @@ window.addEventListener("single-spa:before-routing-event", (evt) => {
   const newPath = new URL(newUrl).pathname;
   
   // Rutas protegidas que requieren autenticación
-  const protectedRoutes = ['/bo', '/inicio'];
+  const protectedRoutes = ['/bo'];
   const isProtectedRoute = protectedRoutes.some(route => newPath.startsWith(route));
   
   // Si es una ruta protegida y el usuario no está autenticado, cancelar y redirigir
@@ -70,7 +70,7 @@ window.addEventListener("single-spa:before-routing-event", (evt) => {
   // Si es la ruta de auth y el usuario ya está autenticado, redirigir al dashboard
   if (newPath === '/auth' && isUserAuthenticated()) {
     evt.detail.cancelNavigation();
-    navigateToUrl('/bo/inicio');
+    navigateToUrl('/bo/products');
   }
 });
 

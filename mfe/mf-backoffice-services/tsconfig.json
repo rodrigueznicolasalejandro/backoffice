@@ -1,0 +1,18 @@
+{
+  "extends": "ts-config-single-spa",
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "declarationDir": "dist",
+    "lib": ["ES2021.String", "DOM"],
+    "baseUrl": "./",
+    "paths": {
+      "@ui/*": ["src/ui/*"],
+      "@domain/*": ["src/domain/*"],
+      "@infraestructure/*": ["src/infraestructure/*"],
+      "@application/*": ["src/application/*"]
+    }
+  },
+  "files": ["src/link-backoffice-mcc.tsx"],
+  "include": ["src/**/*"],
+  "exclude": ["src/**/*.test*"]
+}
