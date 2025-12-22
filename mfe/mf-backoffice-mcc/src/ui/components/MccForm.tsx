@@ -14,8 +14,6 @@ interface FormInputs {
   code: string;
   description: string;
   allows_tips: boolean;
-  allows_cashback: boolean;
-  allows_incremental_authorization: boolean;
 }
 
 export default function MccForm({ mcc, onSubmit, onCancel, isLoading, isEditing }: MccFormProps) {
@@ -29,8 +27,6 @@ export default function MccForm({ mcc, onSubmit, onCancel, isLoading, isEditing 
       code: mcc?.code || '',
       description: mcc?.description || '',
       allows_tips: mcc?.allows_tips || false,
-      allows_cashback: mcc?.allows_cashback || false,
-      allows_incremental_authorization: mcc?.allows_incremental_authorization || false,
     },
   });
 
@@ -40,8 +36,6 @@ export default function MccForm({ mcc, onSubmit, onCancel, isLoading, isEditing 
         code: mcc.code || '',
         description: mcc.description || '',
         allows_tips: mcc.allows_tips || false,
-        allows_cashback: mcc.allows_cashback || false,
-        allows_incremental_authorization: mcc.allows_incremental_authorization || false,
       });
     }
   }, [mcc, reset]);
@@ -51,8 +45,6 @@ export default function MccForm({ mcc, onSubmit, onCancel, isLoading, isEditing 
       code: data.code,
       description: data.description,
       allows_tips: data.allows_tips,
-      allows_cashback: data.allows_cashback,
-      allows_incremental_authorization: data.allows_incremental_authorization,
     };
 
     onSubmit(mccData);
@@ -114,46 +106,18 @@ export default function MccForm({ mcc, onSubmit, onCancel, isLoading, isEditing 
         {errors.description && <p className={errorClassName}>{errors.description.message}</p>}
       </div>
 
-      {/* Checkboxes */}
-      <div className="space-y-4">
-        <div className="flex items-center">
-          <input
-            id="allows_tips"
-            type="checkbox"
-            {...register('allows_tips')}
-            className="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed"
-            disabled={isLoading}
-          />
-          <label htmlFor="allows_tips" className="ml-2 text-sm text-gray-700 cursor-pointer">
-            Permite propinas
-          </label>
-        </div>
-
-        <div className="flex items-center">
-          <input
-            id="allows_cashback"
-            type="checkbox"
-            {...register('allows_cashback')}
-            className="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed"
-            disabled={isLoading}
-          />
-          <label htmlFor="allows_cashback" className="ml-2 text-sm text-gray-700 cursor-pointer">
-            Permite cashback
-          </label>
-        </div>
-
-        <div className="flex items-center">
-          <input
-            id="allows_incremental_authorization"
-            type="checkbox"
-            {...register('allows_incremental_authorization')}
-            className="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed"
-            disabled={isLoading}
-          />
-          <label htmlFor="allows_incremental_authorization" className="ml-2 text-sm text-gray-700 cursor-pointer">
-            Permite autorización incremental
-          </label>
-        </div>
+      {/* Checkbox */}
+      <div className="flex items-center">
+        <input
+          id="allows_tips"
+          type="checkbox"
+          {...register('allows_tips')}
+          className="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed"
+          disabled={isLoading}
+        />
+        <label htmlFor="allows_tips" className="ml-2 text-sm text-gray-700 cursor-pointer">
+          Permite propinas
+        </label>
       </div>
 
       {/* Botones */}

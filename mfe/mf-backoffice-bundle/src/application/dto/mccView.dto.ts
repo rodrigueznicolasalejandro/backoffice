@@ -1,5 +1,6 @@
 export interface MccViewDto {
-code: string;
-description: string; 
-allowsTips: boolean;
+  id: number;
+  code: string;
+  description: string;
+  allowsTips: boolean;
 }

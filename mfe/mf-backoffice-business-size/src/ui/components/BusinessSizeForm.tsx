@@ -26,6 +26,7 @@ const BusinessSizeForm: React.FC<BusinessSizeFormProps> = ({
   } = useForm({
     defaultValues: {
       name: businessSize?.name || '',
+      isActive: businessSize?.isActive ?? true,
     },
   });
 
@@ -33,6 +34,7 @@ const BusinessSizeForm: React.FC<BusinessSizeFormProps> = ({
     if (businessSize) {
       reset({
         name: businessSize.name,
+        isActive: businessSize.isActive ?? true,
       });
     }
   }, [businessSize, reset]);
@@ -44,7 +46,6 @@ const BusinessSizeForm: React.FC<BusinessSizeFormProps> = ({
       </h2>
       
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-        {/* Nombre */}
         <div>
           <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
             Nombre <span className="text-red-500">*</span>
@@ -73,7 +74,18 @@ const BusinessSizeForm: React.FC<BusinessSizeFormProps> = ({
           )}
         </div>
 
-        {/* Botones */}
+        <div className="flex items-center gap-3">
+          <input
+            {...register('isActive')}
+            id="isActive"
+            type="checkbox"
+            className="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
+          />
+          <label htmlFor="isActive" className="text-sm font-medium text-gray-700">
+            Activo
+          </label>
+        </div>
+
         <div className="flex gap-3 pt-4">
           <button
             type="submit"

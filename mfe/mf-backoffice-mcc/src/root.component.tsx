@@ -6,7 +6,7 @@ import { MccApiRepository } from './infraestructure/MccApiRepository';
 import { CreateMccUseCase } from './application/CreateMccUseCase';
 import { UpdateMccUseCase } from './application/UpdateMccUseCase';
 import { GetMccByIdUseCase } from './application/GetMccByIdUseCase';
-import { MdEdit, MdDelete, MdAdd } from 'react-icons/md';
+import { MdEdit, MdDelete, MdAdd, MdCheck, MdClose } from 'react-icons/md';
 import { IoChevronBack } from 'react-icons/io5';
 import { ConfirmModal } from './ui/components/Modal/ConfirmModal';
 import { useState } from 'react';
@@ -61,8 +61,6 @@ function MccList() {
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Código</th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Descripción</th>
               <th className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">Propinas</th>
-              <th className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">Cashback</th>
-              <th className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">Auto. Incremental</th>
               <th className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">Acciones</th>
             </tr>
           </thead>
@@ -71,9 +69,13 @@ function MccList() {
               <tr key={mcc.id} className="hover:bg-gray-50">
                 <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{mcc.code}</td>
                 <td className="px-6 py-4 text-sm text-gray-600">{mcc.description}</td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-center">{mcc.allows_tips ? '✓' : '✗'}</td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-center">{mcc.allows_cashback ? '✓' : '✗'}</td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-center">{mcc.allows_incremental_authorization ? '✓' : '✗'}</td>
+                <td className="px-6 py-4 whitespace-nowrap text-sm text-center">
+                  {mcc.allows_tips ? (
+                    <MdCheck className="inline text-green-600 w-5 h-5" />
+                  ) : (
+                    <MdClose className="inline text-red-600 w-5 h-5" />
+                  )}
+                </td>
                 <td className="px-6 py-4 whitespace-nowrap text-center">
                   <div className="flex gap-2 justify-center">
                     <button
