@@ -4,6 +4,7 @@
         "@link/backoffice-bundle": "//localhost:3001/link-backoffice-bundle.js",
         "@link/backoffice-product": "//localhost:3003/link-backoffice-product.js",
         "@link/backoffice-mcc": "//localhost:3004/link-backoffice-mcc.js",
+        "@link/backoffice-business-size": "//localhost:3005/link-backoffice-business-size.js",
         "@link/backoffice-header": "//localhost:8087/link-backoffice-header.js",
         "@link/backoffice-menu": "//localhost:8086/link-backoffice-menu.js",
         "@link/styleguide": "//localhost:9000/public/assets/link-styleguide.js",

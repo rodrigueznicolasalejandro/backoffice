@@ -57,7 +57,7 @@ if ($LASTEXITCODE -ne 0) {
 Set-Location ..\..
 
 # Product
-Write-Host "6/7 - Instalando Product..." -ForegroundColor Yellow
+Write-Host "6/8 - Instalando Product..." -ForegroundColor Yellow
 Set-Location "mfe\mf-backoffice-product"
 npm install
 if ($LASTEXITCODE -ne 0) {
@@ -67,11 +67,21 @@ if ($LASTEXITCODE -ne 0) {
 Set-Location ..\..
 
 # MCC
-Write-Host "7/7 - Instalando MCC..." -ForegroundColor Yellow
+Write-Host "7/8 - Instalando MCC..." -ForegroundColor Yellow
 Set-Location "mfe\mf-backoffice-mcc"
 npm install
 if ($LASTEXITCODE -ne 0) {
     Write-Host "Error instalando MCC" -ForegroundColor Red
+    exit 1
+}
+Set-Location ..\..
+
+# Business Size
+Write-Host "8/8 - Instalando Business Size..." -ForegroundColor Yellow
+Set-Location "mfe\mf-backoffice-business-size"
+npm install
+if ($LASTEXITCODE -ne 0) {
+    Write-Host "Error instalando Business Size" -ForegroundColor Red
     exit 1
 }
 Set-Location ..\..

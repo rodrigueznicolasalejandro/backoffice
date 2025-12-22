@@ -38,6 +38,10 @@ Start-Process powershell -ArgumentList "-NoExit", "-Command", "cd '$currentPath\
 Write-Host "Iniciando MCC (puerto 3004)..." -ForegroundColor Green
 Start-Process powershell -ArgumentList "-NoExit", "-Command", "cd '$currentPath\mfe\mf-backoffice-mcc'; npm start"
 
+# Business Size (puerto 3005)
+Write-Host "Iniciando Business Size (puerto 3005)..." -ForegroundColor Green
+Start-Process powershell -ArgumentList "-NoExit", "-Command", "cd '$currentPath\mfe\mf-backoffice-business-size'; npm start"
+
 Write-Host ""
 Write-Host "=====================================" -ForegroundColor Cyan
 Write-Host "✓ Todos los servicios están iniciando" -ForegroundColor Cyan
