@@ -3,7 +3,7 @@
   "compilerOptions": {
     "jsx": "react-jsx",
     "declarationDir": "dist",
-    "lib": ["ES2021.String"]
+    "lib": ["ES2021.String", "DOM"]
   },
   "files": ["src/link-backoffice-header.tsx"],
   "include": ["src/**/*"],

@@ -19,7 +19,7 @@
       min-height: 0;
       padding: 8px 24px;
       box-sizing: border-box;
-      overflow: hidden;
+      overflow: visible;
     }
 
     .responsive-aside {
@@ -37,7 +37,7 @@
       flex: 1 1 0%;
       min-width: 0;
       height: 100%;
-      overflow: hidden;
+      overflow: visible;
     }
 
     .responsive-section>header {
@@ -144,14 +144,6 @@
 }
   </style>
 
-  <route path="/inicio" exact>
-    <div class="inicio-container">
-      <h1 class="inicio-title">INICIO</h1>
-      <button class="inicio-btn" onclick="window.navigateToUrl('/bo/paquetes/listado')">
-        Ir a Paquetes
-      </button>
-    </div>
-  </route>
   <!-- {/* La ruta padre que define el layout compartido */} -->
   <route path="/bo">
     <div class="responsive-container">
@@ -165,16 +157,14 @@
         </header>
         <main class="responsive-main">
           <single-spa-router>
-            <route path="config">
-              <div>
-                <h1>CONFIG</h1>
-              </div>
-            </route>
             <route path="paquetes">
               <application name="@link/backoffice-bundle"></application>
             </route>
-             <route path="productos">
+             <route path="products">
               <application name="@link/backoffice-product"></application>
+            </route>
+             <route path="mccs">
+              <application name="@link/backoffice-mcc"></application>
             </route>
           </single-spa-router>
         </main>
@@ -183,8 +173,7 @@
   </route>
   <route path="/auth">
     <main class="responsive-main">
-      <h1>AUTHENTICATION PAGE</h1>
-      <!-- <application name="@link/login"></application> -->
+      <application name="@link/backoffice-login"></application>
     </main>
   </route>
 </single-spa-router>

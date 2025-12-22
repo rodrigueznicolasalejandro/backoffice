@@ -1,5 +1,3 @@
-import styles from './styles.module.css';
-
 type GridProps = {
   cols?: number;
   children: React.ReactNode;
@@ -14,7 +12,7 @@ function Grid({
 }: GridProps): React.JSX.Element {
   return (
     <div
-      className={styles.grid}
+      className={`grid w-full`} // Tailwind grid
       style={{
         gridTemplateColumns: `repeat(${cols}, 1fr)`,
         gap,

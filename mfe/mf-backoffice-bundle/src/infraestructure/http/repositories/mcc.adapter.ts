@@ -5,7 +5,7 @@ import { httpClient } from "@infraestructure/config/httpClient";
 export class HttpMccRepository implements MccRepository {
     async getMC() {
         const url='/v1/merchant-categories';
-        const {data} = await httpClient.public.get<Mcc[]>(url);
+        const { data } = await httpClient.public.get<{ content: Mcc[] }>(url);
         return data.content;
     }
 }

@@ -27,7 +27,7 @@ module.exports = (webpackConfigEnv, argv) => {
       },
     },
     devServer: {
-      port: 3000,
+      port: 3001,
     },
     module: {
       rules: [

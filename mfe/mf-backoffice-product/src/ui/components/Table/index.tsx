@@ -1,5 +1,4 @@
 import React from 'react';
-import styles from './styles.module.css';
 
 export const TableContainer: React.FC<{
   children: React.ReactNode;
@@ -8,8 +7,8 @@ export const TableContainer: React.FC<{
   <div
     className={
       className
-        ? `${styles.tableContainer} ${className}`
-        : styles.tableContainer
+        ? `bg-white rounded-lg shadow p-4 overflow-hidden w-full box-border ${className}`
+        : 'bg-white rounded-lg shadow p-4 overflow-hidden w-full box-border'
     }
   >
     {children}
@@ -45,28 +44,25 @@ export const Table: React.FC<{
   return (
     <div
       className={
-        className ? `${styles.tableWrapper} ${className}` : styles.tableWrapper
+        className
+          ? `w-full rounded-lg p-4 box-border ${className}`
+          : 'w-full rounded-lg p-4 box-border'
       }
     >
-      <table className={styles.table}>
+      <table className="w-full border-collapse">
         {colgroup}
         {header}
+        {body}
       </table>
-      <div className={styles.bodyScroll} style={{ maxHeight: bodyHeight }}>
-        <table className={styles.table}>
-          {colgroup}
-          {body}
-        </table>
-      </div>
     </div>
   );
 };
 
 export const TableHeader: React.FC<{ header: string[] }> = ({ header }) => (
-  <thead className={styles.thead}>
+  <thead className="sticky top-0 z-20">
     <tr>
       {header.map((col) => (
-        <th key={col} className={styles.th}>
+        <th key={col} className="bg-gray-100 text-primary-700 font-semibold border-b border-gray-200 p-3 text-left">
           {col}
         </th>
       ))}
@@ -78,7 +74,7 @@ export const TableRow: React.FC<{
   children: React.ReactNode;
   className?: string;
 }> = ({ children, className }) => (
-  <tr className={className ? `${styles.tr} ${className}` : styles.tr}>
+  <tr className={className ? `border-b border-gray-200 transition-colors hover:bg-gray-50 ${className}` : 'border-b border-gray-200 transition-colors hover:bg-gray-50'}>
     {children}
   </tr>
 );
@@ -89,7 +85,7 @@ export const TableCol: React.FC<{
   align?: 'start' | 'center' | 'end';
 }> = ({ children, className, align }) => (
   <td
-    className={className ? `${styles.td} ${className}` : styles.td}
+    className={className ? `p-3 box-border text-left ${className}` : 'p-3 box-border text-left'}
     style={{ textAlign: align }}
   >
     {children}

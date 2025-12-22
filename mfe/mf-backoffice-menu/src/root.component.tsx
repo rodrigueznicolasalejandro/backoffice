@@ -1,7 +1,12 @@
 import React from "react";
+import { BrowserRouter } from "react-router-dom";
 import "./global-font.css";
 import MenuApp from "./pages/menuApp/MenuApp";
 
 export default function Root() {
-  return <MenuApp />;
+  return (
+    <BrowserRouter>
+      <MenuApp />
+    </BrowserRouter>
+  );
 }

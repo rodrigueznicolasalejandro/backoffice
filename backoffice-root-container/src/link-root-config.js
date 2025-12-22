@@ -15,8 +15,28 @@ if (typeof window !== "undefined") {
   window.navigateToUrl = navigateToUrl;
 }
 
+// Función para verificar si el usuario está autenticado
+function isUserAuthenticated() {
+  const token = localStorage.getItem('jwt_token');
+  if (!token) return false;
+
+  try {
+    // Decodificar el token JWT para verificar expiración
+    const payload = JSON.parse(atob(token.split('.')[1]));
+    const currentTime = Math.floor(Date.now() / 1000);
+    return payload.exp > currentTime;
+  } catch (error) {
+    return false;
+  }
+}
+
+// Redirección basada en autenticación
 if (window.location.pathname === "/") {
-  window.location.replace("/inicio");
+  if (isUserAuthenticated()) {
+    window.location.replace("/bo/inicio");
+  } else {
+    window.location.replace("/auth");
+  }
 }
 const routes = constructRoutes(microfrontendLayout);
 const applications = constructApplications({
@@ -32,40 +52,28 @@ applications.forEach((app) => {
 layoutEngine.activate();
 start();
 
-// window.addEventListener("single-spa:before-routing-event", (evt) => {
-//   const {
-//     originalEvent,
-//     newAppStatuses,
-//     appsByNewStatus,
-//     totalAppChanges,
-//     oldUrl,
-//     newUrl,
-//     navigationIsCanceled,
-//     cancelNavigation,
-//   } = evt.detail;
-//   console.log(
-//     "original event that triggered this single-spa event",
-//     originalEvent
-//   ); // PopStateEvent | HashChangeEvent | undefined
-//   console.log(
-//     "the new status for all applications after the reroute finishes",
-//     newAppStatuses
-//   ); // { app1: MOUNTED, app2: NOT_MOUNTED }
-//   console.log(
-//     "the applications that changed, grouped by their status",
-//     appsByNewStatus
-//   ); // { MOUNTED: ['app1'], NOT_MOUNTED: ['app2'] }
-//   console.log(
-//     "number of applications that changed status so far during this reroute",
-//     totalAppChanges
-//   ); // 2
-//   console.log("the URL before the navigationEvent", oldUrl); // http://localhost:8080/old-route
-//   console.log("the URL after the navigationEvent", newUrl); // http://localhost:8080/new-route
-//   console.log("has the navigation been canceled", navigationIsCanceled); // false
+// Proteger rutas que requieren autenticación
+window.addEventListener("single-spa:before-routing-event", (evt) => {
+  const { newUrl } = evt.detail;
+  const newPath = new URL(newUrl).pathname;
+  
+  // Rutas protegidas que requieren autenticación
+  const protectedRoutes = ['/bo', '/inicio'];
+  const isProtectedRoute = protectedRoutes.some(route => newPath.startsWith(route));
+  
+  // Si es una ruta protegida y el usuario no está autenticado, cancelar y redirigir
+  if (isProtectedRoute && !isUserAuthenticated()) {
+    evt.detail.cancelNavigation();
+    navigateToUrl('/auth');
+  }
+  
+  // Si es la ruta de auth y el usuario ya está autenticado, redirigir al dashboard
+  if (newPath === '/auth' && isUserAuthenticated()) {
+    evt.detail.cancelNavigation();
+    navigateToUrl('/bo/inicio');
+  }
+});
 
-//   // The cancelNavigation function is only defined in the before-routing-event
-//   evt.detail.cancelNavigation();
-// });
 addErrorHandler((err) => {
   console.groupCollapsed(
     // eslint-disable-line no-console

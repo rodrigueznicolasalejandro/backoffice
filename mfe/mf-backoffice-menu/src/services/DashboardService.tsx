@@ -1,4 +1,4 @@
-import { secureGet } from "@link/security-module";
+// import { secureGet } from "@link/security-module";
 
 export interface OnboardingMenuItem {
   code: string;

@@ -1,10 +1,42 @@
 [
   {
-    "code": "inicio",
-    "label": "Inicio",
-    "description": "Inicio",
-    "link_url": "/inicio",
-    "icon_code": "START",
+    "code": "productos",
+    "label": "Productos",
+    "description": "Productos",
+    "link_url": "/bo/products",
+    "icon_code": "MdInventory",
+    "sub_items": []
+  },
+  {
+    "code": "servicios",
+    "label": "Servicios",
+    "description": "Servicios",
+    "link_url": "/bo/servicios",
+    "icon_code": "MdMiscellaneousServices",
+    "sub_items": []
+  },
+  {
+    "code": "pricing",
+    "label": "Pricing",
+    "description": "Pricing",
+    "link_url": "/bo/pricing",
+    "icon_code": "MdAttachMoney",
+    "sub_items": []
+  },
+  {
+    "code": "mccs",
+    "label": "MCCs",
+    "description": "MCCs",
+    "link_url": "/bo/mccs",
+    "icon_code": "MdCategory",
+    "sub_items": []
+  },
+  {
+    "code": "tamanos-comercio",
+    "label": "Tamaños comercio",
+    "description": "Tamaños comercio",
+    "link_url": "/bo/tamanos-comercio",
+    "icon_code": "MdBusiness",
     "sub_items": []
   },
   {
@@ -12,32 +44,7 @@
     "label": "Paquetes",
     "description": "Paquetes",
     "link_url": "/bo/paquetes",
-    "icon_code": "SMS",
-    "sub_items": [
-      {
-        "code": "paquetes.nuevo",
-        "label": "Nuevo paquete",
-        "description": "nuevo",
-        "link_url": "/bo/paquetes/new",
-        "icon_code": "SMS",
-        "sub_items": []
-      },
-      {
-        "code": "paquetes.listado",
-        "label": "Mis paquetes",
-        "description": "listado",
-        "link_url": "/bo/paquetes/listado",
-        "icon_code": "SMS",
-        "sub_items": []
-      }
-    ]
-  },
- {
-        "code": "productos",
-        "label": "Productos",
-        "description": "",
-        "link_url": "/bo/productos",
-        "icon_code": "SMS",
-        "sub_items": []
-      }
+    "icon_code": "MdCardGiftcard",
+    "sub_items": []
+  }
 ]

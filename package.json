@@ -1,0 +1,36 @@
+{
+  "name": "backoffice-workspace",
+  "version": "1.0.0",
+  "description": "Sistema de backoffice con microfrontends Single-SPA",
+  "private": true,
+  "scripts": {
+    "install:all": "powershell -ExecutionPolicy Bypass -File ./install-all.ps1",
+    "start:all": "powershell -ExecutionPolicy Bypass -File ./start-all.ps1"
+  },
+  "workspaces": [
+    "backoffice-root-container",
+    "mfe/mf-backoffice-login",
+    "mfe/mf-backoffice-header",
+    "mfe/mf-backoffice-menu",
+    "mfe/mf-backoffice-bundle",
+    "mfe/mf-backoffice-product",
+    "mfe/mf-backoffice-mcc"
+  ],
+  "keywords": [
+    "single-spa",
+    "microfrontends",
+    "react",
+    "typescript",
+    "tailwind"
+  ],
+  "author": "",
+  "license": "UNLICENSED",
+  "repository": {
+    "type": "git",
+    "url": "Actualizar con tu URL de repositorio"
+  },
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=8.0.0ndro/backoffice"
+  }
+}
