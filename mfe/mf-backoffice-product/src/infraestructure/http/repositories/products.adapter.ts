@@ -4,9 +4,9 @@ import { ProductsRepository, ProductsRepositoryV1 } from "@domain/ports/reposito
 import { httpClient } from "@infraestructure/config/httpClient";
 
 export class HttpProductsRepository implements ProductsRepository {
-    async getProducts() {
-        const {data} = await httpClient.get<{ data: { products: Product[] } }>('/products');
-        return data.data.products;
+    async getProducts(page: number = 1, limit: number = 10) {
+        const {data} = await httpClient.get<{ data: { products: Product[], pagination: any } }>(`/products?page=${page}&limit=${limit}`);
+        return data.data;
     }
     
     async getProduct(id: string) {

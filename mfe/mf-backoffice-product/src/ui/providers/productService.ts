@@ -5,8 +5,8 @@ import { ProductViewDto } from "@application/dto/productView.dto";
 // const getProductsUseCase = new GetProductsUseCase(new HttpProductsRepository());
 const getProductsUseCase = new GetProductsUseCase(new HttpProductsRepository());
 
-export async function getProducts(): Promise<ProductViewDto[]> {
-    return await getProductsUseCase.execute();
+export async function getProducts(page: number = 1, limit: number = 10): Promise<{ products: ProductViewDto[], pagination: any }> {
+    return await getProductsUseCase.execute(page, limit);
 }
 
 // Helper para obtener headers con JWT

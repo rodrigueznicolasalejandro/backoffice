@@ -3,7 +3,6 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { getProduct, updateProduct } from '@ui/providers/productService';
 import ProductForm from '../../components/ProductForm';
 import { IoChevronBack } from 'react-icons/io5';
-import { MdError } from 'react-icons/md';
 import { AiOutlineLoading3Quarters } from 'react-icons/ai';
 
 export default function ProductEdit() {
@@ -23,7 +22,6 @@ export default function ProductEdit() {
         setProduct(data);
       } catch (err: any) {
         setError(err.message || 'Error al cargar el producto');
-        console.error('Error cargando producto:', err);
       } finally {
         setLoadingProduct(false);
       }
@@ -38,13 +36,10 @@ export default function ProductEdit() {
       setError('');
       const response = await updateProduct(id, productData);
       if (response.success) {
-        navigate('/products', {
-          state: { successMessage: 'Producto actualizado exitosamente' },
-        });
+        navigate('/products');
       }
     } catch (err: any) {
       setError(err.message || 'Error al actualizar el producto');
-      console.error('Error actualizando producto:', err);
     } finally {
       setLoading(false);
     }
@@ -54,53 +49,41 @@ export default function ProductEdit() {
     navigate('/products');
   };
 
-  return (
-    <div className="min-h-screen bg-gray-50 py-8">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="mb-6">
-          <button
-            onClick={handleCancel}
-            className="flex items-center text-gray-600 hover:text-gray-900 transition-colors"
-          >
-            <IoChevronBack className="w-5 h-5 mr-2" />
-            Volver a productos
-          </button>
+  if (loadingProduct) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <div className="flex items-center gap-3">
+          <AiOutlineLoading3Quarters className="animate-spin h-6 w-6 text-blue-600" />
+          <span className="text-gray-600">Cargando producto...</span>
         </div>
-
-        {error && (
-          <div className="mb-6 p-4 bg-red-50 border-l-4 border-red-500 rounded-md">
-            <div className="flex">
-              <div className="flex-shrink-0">
-                <MdError className="h-5 w-5 text-red-400" />
-              </div>
-              <div className="ml-3">
-                <p className="text-sm text-red-700">{error}</p>
-              </div>
-            </div>
-          </div>
-        )}
-
-        {loadingProduct ? (
-          <div className="bg-white shadow-md rounded-lg p-8 flex justify-center items-center">
-            <div className="flex items-center gap-3">
-              <AiOutlineLoading3Quarters className="animate-spin h-6 w-6 text-blue-600" />
-              <span className="text-gray-600">Cargando producto...</span>
-            </div>
-          </div>
-        ) : product ? (
-          <ProductForm
-            product={product}
-            onSubmit={handleUpdateProduct}
-            onCancel={handleCancel}
-            isLoading={loading}
-            isEditing={true}
-          />
-        ) : (
-          <div className="bg-white shadow-md rounded-lg p-8 text-center">
-            <p className="text-gray-500">No se encontró el producto</p>
-          </div>
-        )}
       </div>
+    );
+  }
+
+  if (!product) {
+    return (
+      <div className="flex justify-center items-center h-screen text-red-600">
+        <div className="text-lg">No se encontró el producto</div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="p-6">
+      <button
+        onClick={handleCancel}
+        className="flex items-center gap-2 text-blue-600 hover:text-blue-700 mb-4"
+      >
+        <IoChevronBack /> Volver
+      </button>
+      {error && <div className="mb-4 p-4 bg-red-50 text-red-600 rounded-md">{error}</div>}
+      <ProductForm
+        product={product}
+        onSubmit={handleUpdateProduct}
+        onCancel={handleCancel}
+        isLoading={loading}
+        isEditing={true}
+      />
     </div>
   );
 }
