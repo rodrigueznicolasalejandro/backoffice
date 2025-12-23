@@ -37,7 +37,7 @@ export function useProducts() {
     };
 
     useEffect(() => {
-        fetchProducts(currentPage);
+        fetchProducts(1);
     }, []);
 
     const handlePageChange = (page: number) => {

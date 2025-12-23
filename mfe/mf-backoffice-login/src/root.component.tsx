@@ -1,4 +1,5 @@
 import React from "react";
+import "./index.css";
 import Login from "./ui/pages/Login/Login";
 
 export default function Root() {
