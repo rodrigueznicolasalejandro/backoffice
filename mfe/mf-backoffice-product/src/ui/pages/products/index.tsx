@@ -25,7 +25,6 @@ const TableProducts = ({ products, pagination, onPageChange }) => {
       window.location.reload();
     } catch (error) {
       console.error('Error al eliminar producto:', error);
-      alert(`Error al eliminar el producto: ${error.message}`);
     } finally {
       setIsDeleting(false);
     }

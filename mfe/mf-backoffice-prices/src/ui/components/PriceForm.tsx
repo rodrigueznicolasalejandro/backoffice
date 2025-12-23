@@ -1,6 +1,7 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Price } from '@domain/Price';
+import { MdAdd, MdDelete } from 'react-icons/md';
 
 interface PriceFormProps {
   price?: Price | null;
@@ -17,6 +18,13 @@ const PriceForm: React.FC<PriceFormProps> = ({
   isLoading = false,
   isEditing = false,
 }) => {
+  // Estado para múltiples rangos de cuotas (solo en creación)
+  const [rangosCuotas, setRangosCuotas] = useState<Array<{
+    rangoCuotaInferior: number | null;
+    rangoCuotaSuperior: number | null;
+    valorArancel: string | null;
+  }>>([{ rangoCuotaInferior: null, rangoCuotaSuperior: null, valorArancel: null }]);
+
   const {
     register,
     handleSubmit,
@@ -43,6 +51,25 @@ const PriceForm: React.FC<PriceFormProps> = ({
 
   const tipoPrecio = watch('tipoPrecio');
 
+  // Agregar un nuevo rango
+  const agregarRango = () => {
+    setRangosCuotas([...rangosCuotas, { rangoCuotaInferior: null, rangoCuotaSuperior: null, valorArancel: null }]);
+  };
+
+  // Eliminar un rango
+  const eliminarRango = (index: number) => {
+    if (rangosCuotas.length > 1) {
+      setRangosCuotas(rangosCuotas.filter((_, i) => i !== index));
+    }
+  };
+
+  // Actualizar valor de un rango
+  const actualizarRango = (index: number, campo: string, valor: any) => {
+    const nuevosRangos = [...rangosCuotas];
+    nuevosRangos[index] = { ...nuevosRangos[index], [campo]: valor };
+    setRangosCuotas(nuevosRangos);
+  };
+
   useEffect(() => {
     if (price) {
       setValue('nombre', price.nombre);
@@ -58,8 +85,29 @@ const PriceForm: React.FC<PriceFormProps> = ({
       setValue('dateFrom', price.dateFrom);
       setValue('dateTo', price.dateTo);
       setValue('idSubadquirente', price.idSubadquirente);
+      // En edición, inicializar con un solo rango
+      if (isEditing) {
+        setRangosCuotas([{
+          rangoCuotaInferior: price.rangoCuotaInferior,
+          rangoCuotaSuperior: price.rangoCuotaSuperior,
+          valorArancel: price.valorArancel
+        }]);
+      }
     }
-  }, [price, setValue]);
+  }, [price, setValue, isEditing]);
+
+  // Función personalizada para manejar el submit
+  const handleFormSubmit = async (data: any) => {
+    if (!isEditing && (tipoPrecio === 'Arancel' || tipoPrecio === 'Mixto')) {
+      // En creación con Arancel o Mixto, excluir campos que solo vienen de los rangos
+      const { rangoCuotaInferior, rangoCuotaSuperior, valorArancel, idPricingProducto, ...baseData } = data;
+      // Enviar los rangos de cuotas al callback con los datos base
+      await onSubmit({ ...baseData, rangosCuotas });
+    } else {
+      // En edición o cuando no hay rangos, comportamiento normal
+      await onSubmit(data);
+    }
+  };
 
   return (
     <div className="max-w-4xl mx-auto bg-white shadow-md rounded-lg p-6">
@@ -67,7 +115,7 @@ const PriceForm: React.FC<PriceFormProps> = ({
         {isEditing ? 'Editar Precio' : 'Crear Precio'}
       </h2>
 
-      <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+      <form onSubmit={handleSubmit(handleFormSubmit)} className="space-y-6">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {/* Nombre */}
           <div>
@@ -84,45 +132,124 @@ const PriceForm: React.FC<PriceFormProps> = ({
             )}
           </div>
 
-          {/* ID Pricing Producto */}
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
-              ID Pricing Producto <span className="text-red-600">*</span>
-            </label>
-            <input
-              type="text"
-              {...register('idPricingProducto', { required: 'El ID es requerido' })}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
-            {errors.idPricingProducto && (
-              <span className="text-red-600 text-sm">{errors.idPricingProducto.message}</span>
-            )}
-          </div>
+          {/* ID Pricing Producto - Solo en edición y deshabilitado */}
+          {isEditing && (
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">
+                ID Pricing Producto
+              </label>
+              <input
+                type="text"
+                {...register('idPricingProducto')}
+                disabled
+                className="w-full px-3 py-2 border border-gray-300 rounded-md bg-gray-100 text-gray-500 cursor-not-allowed"
+              />
+            </div>
+          )}
+        </div>
 
-          {/* Rango Cuota Inferior */}
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
-              Rango Cuota Inferior
-            </label>
-            <input
-              type="number"
-              {...register('rangoCuotaInferior', { valueAsNumber: true })}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
-          </div>
+        {/* Rangos de Cuotas - Múltiples en creación, único en edición - Solo para Arancel o Mixto */}
+        {!isEditing && (tipoPrecio === 'Arancel' || tipoPrecio === 'Mixto') && (
+          <div className="border-t pt-4">
+            <div className="flex justify-between items-center mb-4">
+              <h3 className="text-lg font-semibold text-gray-800">Rangos de Cuotas</h3>
+              <button
+                type="button"
+                onClick={agregarRango}
+                className="flex items-center gap-1 px-3 py-1.5 bg-green-600 text-white rounded-md hover:bg-green-700 transition"
+              >
+                <MdAdd size={20} />
+                Agregar Rango
+              </button>
+            </div>
 
-          {/* Rango Cuota Superior */}
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
-              Rango Cuota Superior
-            </label>
-            <input
-              type="number"
-              {...register('rangoCuotaSuperior', { valueAsNumber: true })}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
-          </div>
+            {rangosCuotas.map((rango, index) => (
+              <div key={index} className="bg-gray-50 p-4 rounded-md mb-4 border border-gray-200">
+                <div className="flex justify-between items-center mb-3">
+                  <h4 className="font-medium text-gray-700">Rango {index + 1}</h4>
+                  {rangosCuotas.length > 1 && (
+                    <button
+                      type="button"
+                      onClick={() => eliminarRango(index)}
+                      className="text-red-600 hover:text-red-800 transition"
+                    >
+                      <MdDelete size={20} />
+                    </button>
+                  )}
+                </div>
 
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                      Cuota Inferior
+                    </label>
+                    <input
+                      type="number"
+                      value={rango.rangoCuotaInferior ?? ''}
+                      onChange={(e) => actualizarRango(index, 'rangoCuotaInferior', e.target.value ? parseInt(e.target.value) : null)}
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                      Cuota Superior
+                    </label>
+                    <input
+                      type="number"
+                      value={rango.rangoCuotaSuperior ?? ''}
+                      onChange={(e) => actualizarRango(index, 'rangoCuotaSuperior', e.target.value ? parseInt(e.target.value) : null)}
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                      Valor Arancel
+                    </label>
+                    <input
+                      type="text"
+                      value={rango.valorArancel ?? ''}
+                      onChange={(e) => actualizarRango(index, 'valorArancel', e.target.value || null)}
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    />
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+
+        {/* Campos de rango tradicionales en modo edición - Solo para Arancel o Mixto */}
+        {isEditing && (tipoPrecio === 'Arancel' || tipoPrecio === 'Mixto') && (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {/* Rango Cuota Inferior */}
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">
+                Rango Cuota Inferior
+              </label>
+              <input
+                type="number"
+                {...register('rangoCuotaInferior', { valueAsNumber: true })}
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
+
+            {/* Rango Cuota Superior */}
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">
+                Rango Cuota Superior
+              </label>
+              <input
+                type="number"
+                {...register('rangoCuotaSuperior', { valueAsNumber: true })}
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
+          </div>
+        )}
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {/* Tipo Plazo */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -175,43 +302,6 @@ const PriceForm: React.FC<PriceFormProps> = ({
               <span className="text-red-600 text-sm">{errors.tipoPrecio.message}</span>
             )}
           </div>
-
-          {/* ID Subadquirente */}
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
-              ID Subadquirente <span className="text-red-600">*</span>
-            </label>
-            <input
-              type="number"
-              {...register('idSubadquirente', { 
-                required: 'El ID subadquirente es requerido',
-                valueAsNumber: true 
-              })}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
-            {errors.idSubadquirente && (
-              <span className="text-red-600 text-sm">{errors.idSubadquirente.message}</span>
-            )}
-          </div>
-
-          {/* Valor Arancel - Solo si tipoPrecio es Arancel o Mixto */}
-          {(tipoPrecio === 'Arancel' || tipoPrecio === 'Mixto') && (
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
-                Valor Arancel {tipoPrecio === 'Arancel' && <span className="text-red-600">*</span>}
-              </label>
-              <input
-                type="text"
-                {...register('valorArancel', {
-                  required: tipoPrecio === 'Arancel' ? 'El valor arancel es requerido' : false,
-                })}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-              />
-              {errors.valorArancel && (
-                <span className="text-red-600 text-sm">{errors.valorArancel.message}</span>
-              )}
-            </div>
-          )}
 
           {/* Valor Precio Fijo ARS - Solo si tipoPrecio es Precio Fijo o Mixto */}
           {(tipoPrecio === 'Precio Fijo' || tipoPrecio === 'Mixto') && (
@@ -267,17 +357,7 @@ const PriceForm: React.FC<PriceFormProps> = ({
             />
           </div>
 
-          {/* Date To */}
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
-              Fecha Hasta
-            </label>
-            <input
-              type="date"
-              {...register('dateTo')}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
-          </div>
+          {/* Date To - Oculto en ambos modos */}
         </div>
 
         {/* Buttons */}

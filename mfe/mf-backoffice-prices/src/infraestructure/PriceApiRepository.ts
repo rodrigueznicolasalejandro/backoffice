@@ -12,8 +12,8 @@ export class PriceApiRepository implements PriceRepository {
 
   async getById(id: number): Promise<Price | null> {
     try {
-      const response = await httpClient.get<{ success: boolean; data: Price }>(`${this.basePath}/${id}`);
-      return response.data.data;
+      const response = await httpClient.get<{ success: boolean; data: { price: Price } }>(`${this.basePath}/${id}`);
+      return response.data.data.price;
     } catch (error) {
       return null;
     }

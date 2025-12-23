@@ -34,13 +34,6 @@ export function BusinessSizeListPage() {
     <div className="p-6">
       <div className="flex justify-between items-center mb-6">
         <h1 className="text-3xl font-bold text-gray-800">Tamaños de Comercio</h1>
-        <button
-          onClick={() => navigate('/bo/business-size/create')}
-          className="px-4 py-2 bg-blue-600 text-white border-none rounded-md text-sm font-medium cursor-pointer transition-colors hover:bg-blue-700 flex items-center gap-2"
-        >
-          <MdAdd className="w-5 h-5" />
-          Crear Tamaño
-        </button>
       </div>
       
       <div className="bg-white shadow-md rounded-lg overflow-hidden">
@@ -49,7 +42,6 @@ export function BusinessSizeListPage() {
             <tr>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ID</th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nombre</th>
-              <th className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">Acciones</th>
             </tr>
           </thead>
           <tbody className="bg-white divide-y divide-gray-200">
@@ -57,24 +49,6 @@ export function BusinessSizeListPage() {
               <tr key={bs.id} className="hover:bg-gray-50">
                 <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{bs.id}</td>
                 <td className="px-6 py-4 text-sm text-gray-600 font-semibold">{bs.name}</td>
-                <td className="px-6 py-4 whitespace-nowrap text-center">
-                  <div className="flex gap-2 justify-center">
-                    <button
-                      onClick={() => navigate(`/bo/business-size/edit/${bs.id}`)}
-                      className="px-3 py-1.5 bg-gray-100 text-gray-700 border border-gray-300 rounded text-xs cursor-pointer transition-all hover:bg-gray-200 flex items-center gap-1"
-                    >
-                      <MdEdit className="w-4 h-4" />
-                      Editar
-                    </button>
-                    <button
-                      onClick={() => handleDeleteClick(bs.id, bs.name)}
-                      className="px-3 py-1.5 bg-red-50 text-red-600 border border-red-200 rounded text-xs cursor-pointer transition-all hover:bg-red-100 flex items-center gap-1"
-                    >
-                      <MdDelete className="w-4 h-4" />
-                      Borrar
-                    </button>
-                  </div>
-                </td>
               </tr>
             ))}
           </tbody>

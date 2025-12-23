@@ -34,13 +34,6 @@ export function MccListPage() {
     <div className="p-6">
       <div className="flex justify-between items-center mb-6">
         <h1 className="text-3xl font-bold text-gray-800">MCCs</h1>
-        <button
-          onClick={() => navigate('/bo/mccs/create')}
-          className="px-4 py-2 bg-blue-600 text-white border-none rounded-md text-sm font-medium cursor-pointer transition-colors hover:bg-blue-700 flex items-center gap-2"
-        >
-          <MdAdd className="w-5 h-5" />
-          Crear MCC
-        </button>
       </div>
       
       <div className="bg-white shadow-md rounded-lg overflow-hidden">
@@ -50,7 +43,6 @@ export function MccListPage() {
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Código</th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Descripción</th>
               <th className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">Propinas</th>
-              <th className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">Acciones</th>
             </tr>
           </thead>
           <tbody className="bg-white divide-y divide-gray-200">
@@ -64,24 +56,6 @@ export function MccListPage() {
                   ) : (
                     <MdClose className="inline text-red-600 w-5 h-5" />
                   )}
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap text-center">
-                  <div className="flex gap-2 justify-center">
-                    <button
-                      onClick={() => navigate(`/bo/mccs/edit/${mcc.id}`)}
-                      className="px-3 py-1.5 bg-gray-100 text-gray-700 border border-gray-300 rounded text-xs cursor-pointer transition-all hover:bg-gray-200 flex items-center gap-1"
-                    >
-                      <MdEdit className="w-4 h-4" />
-                      Editar
-                    </button>
-                    <button
-                      onClick={() => handleDeleteClick(mcc.id, mcc.code)}
-                      className="px-3 py-1.5 bg-red-50 text-red-600 border border-red-200 rounded text-xs cursor-pointer transition-all hover:bg-red-100 flex items-center gap-1"
-                    >
-                      <MdDelete className="w-4 h-4" />
-                      Borrar
-                    </button>
-                  </div>
                 </td>
               </tr>
             ))}
