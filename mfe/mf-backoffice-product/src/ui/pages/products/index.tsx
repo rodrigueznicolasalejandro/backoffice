@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { ConfirmModal } from '@ui/components/Modal';
 import { Pagination } from '@ui/components/Pagination';
 import { useProducts } from '@ui/pages/products/hooks/useProducts';
+import { deleteProduct } from '@ui/providers/productService';
 import { paths } from '@ui/routes/paths';
 import { MdEdit, MdDelete, MdAdd } from 'react-icons/md';
 
@@ -18,17 +19,13 @@ const TableProducts = ({ products, pagination, onPageChange }) => {
   const handleDeleteConfirm = async () => {
     setIsDeleting(true);
     try {
-      // TODO: Implementar la llamada al servicio de eliminación
-      console.log('Eliminando producto:', deleteModal.productId);
-      await new Promise(resolve => setTimeout(resolve, 1000)); // Simular API call
-      
-      // Aquí deberías llamar al servicio de eliminación y actualizar la lista
-      alert(`Producto "${deleteModal.productName}" eliminado exitosamente`);
-      
+      await deleteProduct(deleteModal.productId);
       setDeleteModal({ isOpen: false, productId: null, productName: '' });
+      // Recargar la página para actualizar la lista
+      window.location.reload();
     } catch (error) {
       console.error('Error al eliminar producto:', error);
-      alert('Error al eliminar el producto');
+      alert(`Error al eliminar el producto: ${error.message}`);
     } finally {
       setIsDeleting(false);
     }

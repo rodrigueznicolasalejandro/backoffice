@@ -67,3 +67,17 @@ export async function updateProduct(id: string | number, productData: any) {
     const result = await response.json();
     return result;
 }
+
+// Eliminar producto
+export async function deleteProduct(id: string | number) {
+    const response = await fetch(`http://localhost:3000/api/v1/products/${id}`, {
+        method: 'DELETE',
+        headers: getAuthHeaders(),
+    });
+    if (!response.ok) {
+        const result = await response.json();
+        throw new Error(result.error || result.message || `Error ${response.status}: ${response.statusText}`);
+    }
+    const result = await response.json();
+    return result;
+}
