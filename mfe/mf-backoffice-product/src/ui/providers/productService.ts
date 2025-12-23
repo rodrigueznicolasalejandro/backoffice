@@ -2,7 +2,6 @@ import { GetProductsUseCase } from "@application/useCases/getProducts.uc";
 import { HttpProductsRepository } from "@infraestructure/http/repositories/products.adapter";
 import { ProductViewDto } from "@application/dto/productView.dto";
 
-// const getProductsUseCase = new GetProductsUseCase(new HttpProductsRepository());
 const getProductsUseCase = new GetProductsUseCase(new HttpProductsRepository());
 
 export async function getProducts(page: number = 1, limit: number = 10): Promise<{ products: ProductViewDto[], pagination: any }> {

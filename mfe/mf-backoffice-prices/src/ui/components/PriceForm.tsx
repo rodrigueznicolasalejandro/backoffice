@@ -103,8 +103,12 @@ const PriceForm: React.FC<PriceFormProps> = ({
       const { rangoCuotaInferior, rangoCuotaSuperior, valorArancel, idPricingProducto, ...baseData } = data;
       // Enviar los rangos de cuotas al callback con los datos base
       await onSubmit({ ...baseData, rangosCuotas });
+    } else if (isEditing) {
+      // En edición, excluir idSubadquirente (lo maneja el backend) e idPricingProducto (no se puede cambiar)
+      const { idSubadquirente, idPricingProducto, ...editData } = data;
+      await onSubmit(editData);
     } else {
-      // En edición o cuando no hay rangos, comportamiento normal
+      // Precio Fijo en creación
       await onSubmit(data);
     }
   };

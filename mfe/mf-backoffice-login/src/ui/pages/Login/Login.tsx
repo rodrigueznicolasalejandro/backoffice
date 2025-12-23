@@ -38,7 +38,9 @@ const Login: React.FC = () => {
     <div className="login-container">
       <div className="login-card">
         <div className="login-header">
-          <div className="login-logo">L</div>
+          <div className="login-logo">
+            <img src="/public/assets/logo/logo.png" alt="Logo" />
+          </div>
           <h1 className="login-title">Backoffice Dashboard</h1>
         </div>
 

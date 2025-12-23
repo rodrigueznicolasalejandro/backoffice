@@ -5,7 +5,8 @@ import { httpClient } from "@infraestructure/config/httpClient";
 
 export class HttpProductsRepository implements ProductsRepository {
     async getProducts(page: number = 1, limit: number = 10) {
-        const {data} = await httpClient.get<{ data: { products: Product[], pagination: any } }>(`/products?page=${page}&limit=${limit}`);
+        const params = new URLSearchParams({ page: page.toString(), limit: limit.toString() });
+        const {data} = await httpClient.get<{ data: { products: Product[], pagination: any } }>(`/products?${params.toString()}`);
         return data.data;
     }
     
