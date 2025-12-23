@@ -3,6 +3,7 @@ import { Mcc } from "@domain/entities/mcc.entity";
 
 export function toMccViewDto(mcc: Mcc): MccViewDto {
     return {
+        id: mcc.id,
         code: mcc.code,
         description: mcc.description,
         allowsTips: mcc.allowsTips

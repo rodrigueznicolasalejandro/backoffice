@@ -8,6 +8,22 @@
     "sub_items": []
   },
   {
+    "code": "productos-precios",
+    "label": "Productos Precios",
+    "description": "Productos Precios",
+    "link_url": "/bo/prices",
+    "icon_code": "MdAttachMoney",
+    "sub_items": []
+  },
+  {
+    "code": "separator-1",
+    "label": "separator",
+    "description": "separator",
+    "link_url": "",
+    "icon_code": "",
+    "sub_items": []
+  },
+  {
     "code": "servicios",
     "label": "Servicios",
     "description": "Servicios",
@@ -16,11 +32,43 @@
     "sub_items": []
   },
   {
-    "code": "prices",
-    "label": "Pricing",
-    "description": "Pricing",
-    "link_url": "/bo/prices",
+    "code": "servicios-precios",
+    "label": "Servicios Precios",
+    "description": "Servicios Precios",
+    "link_url": "/bo/services/prices",
     "icon_code": "MdAttachMoney",
+    "sub_items": []
+  },
+  {
+    "code": "separator-2",
+    "label": "separator",
+    "description": "separator",
+    "link_url": "",
+    "icon_code": "",
+    "sub_items": []
+  },
+  {
+    "code": "pos",
+    "label": "POS",
+    "description": "POS",
+    "link_url": "/bo/pos",
+    "icon_code": "MdPointOfSale",
+    "sub_items": []
+  },
+  {
+    "code": "pos-precios",
+    "label": "POS Precios",
+    "description": "POS Precios",
+    "link_url": "/bo/pos/prices",
+    "icon_code": "MdAttachMoney",
+    "sub_items": []
+  },
+  {
+    "code": "separator-3",
+    "label": "separator",
+    "description": "separator",
+    "link_url": "",
+    "icon_code": "",
     "sub_items": []
   },
   {
@@ -40,11 +88,19 @@
     "sub_items": []
   },
   {
-    "code": "pos",
-    "label": "POS",
-    "description": "POS",
-    "link_url": "/bo/pos",
-    "icon_code": "MdPointOfSale",
+    "code": "separator-4",
+    "label": "separator",
+    "description": "separator",
+    "link_url": "",
+    "icon_code": "",
+    "sub_items": []
+  },
+  {
+    "code": "paquetes",
+    "label": "Paquetes",
+    "description": "Paquetes",
+    "link_url": "/bo/bundles",
+    "icon_code": "MdCardGiftcard",
     "sub_items": []
   }
 ]

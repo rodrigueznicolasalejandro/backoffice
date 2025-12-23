@@ -37,6 +37,15 @@ const MenuList: React.FC<MenuListProps> = ({ items, onNavigate }) => {
   return (
     <ul className="list-none p-0 m-0">
       {items.map((item) => {
+        // Renderizar separador
+        if (item.label === "separator") {
+          return (
+            <li key={item.code} className="my-3">
+              <hr className="border-gray-200" />
+            </li>
+          );
+        }
+
         const IconComponent = iconMap[item.icon_code];
         
         return (
