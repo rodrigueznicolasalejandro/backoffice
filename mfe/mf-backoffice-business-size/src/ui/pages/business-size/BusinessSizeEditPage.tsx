@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import BusinessSizeForm from '../../components/BusinessSizeForm';
 import { BusinessSizeApiRepository } from '../../../infraestructure/BusinessSizeApiRepository';
-import { UpdateBusinessSizeUseCase } from '../../../application/UpdateBusinessSizeUseCase';
-import { GetBusinessSizeByIdUseCase } from '../../../application/GetBusinessSizeByIdUseCase';
+import { UpdateBusinessSizeUseCase } from '../../../application/useCases/UpdateBusinessSizeUseCase';
+import { GetBusinessSizeByIdUseCase } from '../../../application/useCases/GetBusinessSizeByIdUseCase';
 import { IoChevronBack } from 'react-icons/io5';
 
 const repository = new BusinessSizeApiRepository();

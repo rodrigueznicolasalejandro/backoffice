@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { BusinessSize } from '@domain/BusinessSize';
 import { BusinessSizeApiRepository } from '@infraestructure/BusinessSizeApiRepository';
-import { GetAllBusinessSizesUseCase } from '@application/GetAllBusinessSizesUseCase';
-import { DeleteBusinessSizeUseCase } from '@application/DeleteBusinessSizeUseCase';
+import { GetAllBusinessSizesUseCase } from '@application/useCases/GetAllBusinessSizesUseCase';
+import { DeleteBusinessSizeUseCase } from '@application/useCases/DeleteBusinessSizeUseCase';
 
 const repository = new BusinessSizeApiRepository();
 

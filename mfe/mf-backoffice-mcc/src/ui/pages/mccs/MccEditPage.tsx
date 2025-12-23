@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import MccForm from '../../components/MccForm';
 import { MccApiRepository } from '../../../infraestructure/MccApiRepository';
-import { UpdateMccUseCase } from '../../../application/UpdateMccUseCase';
-import { GetMccByIdUseCase } from '../../../application/GetMccByIdUseCase';
+import { UpdateMccUseCase } from '../../../application/useCases/UpdateMccUseCase';
+import { GetMccByIdUseCase } from '../../../application/useCases/GetMccByIdUseCase';
 import { IoChevronBack } from 'react-icons/io5';
 
 const repository = new MccApiRepository();

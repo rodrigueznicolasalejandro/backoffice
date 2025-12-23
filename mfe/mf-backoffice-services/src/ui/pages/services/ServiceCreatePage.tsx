@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ServiceForm from '../../components/ServiceForm';
 import { ServiceApiRepository } from '../../../infraestructure/ServiceApiRepository';
-import { CreateServiceUseCase } from '../../../application/CreateServiceUseCase';
+import { CreateServiceUseCase } from '../../../application/useCases/CreateServiceUseCase';
 import { IoChevronBack } from 'react-icons/io5';
 
 const repository = new ServiceApiRepository();

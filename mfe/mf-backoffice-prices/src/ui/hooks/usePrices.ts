@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { Price } from '@domain/Price';
 import { PriceApiRepository } from '@infraestructure/PriceApiRepository';
-import { GetAllPricesUseCase } from '@application/GetAllPricesUseCase';
-import { DeletePriceUseCase } from '@application/DeletePriceUseCase';
+import { GetAllPricesUseCase } from '@application/useCases/GetAllPricesUseCase';
+import { DeletePriceUseCase } from '@application/useCases/DeletePriceUseCase';
 
 const repository = new PriceApiRepository();
 

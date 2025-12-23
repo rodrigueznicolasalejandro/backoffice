@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import PosForm from '../../components/PosForm';
 import { PosApiRepository } from '../../../infraestructure/PosApiRepository';
-import { UpdatePosUseCase } from '../../../application/UpdatePosUseCase';
-import { GetPosByIdUseCase } from '../../../application/GetPosByIdUseCase';
+import { UpdatePosUseCase } from '../../../application/useCases/UpdatePosUseCase';
+import { GetPosByIdUseCase } from '../../../application/useCases/GetPosByIdUseCase';
 import { IoChevronBack } from 'react-icons/io5';
 
 const repository = new PosApiRepository();

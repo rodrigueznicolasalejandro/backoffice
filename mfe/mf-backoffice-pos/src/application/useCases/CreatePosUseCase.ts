@@ -1,6 +1,6 @@
 import { PosRepository } from '@domain/PosRepository';
 import { Pos } from '@domain/Pos';
-import { PosCreateDto } from './dto/pos.dto';
+import { PosCreateDto } from '../dto/pos.dto';
 
 export class CreatePosUseCase {
   constructor(private repository: PosRepository) {}

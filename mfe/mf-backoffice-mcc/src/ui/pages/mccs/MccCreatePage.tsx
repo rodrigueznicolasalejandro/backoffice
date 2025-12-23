@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import MccForm from '../../components/MccForm';
 import { MccApiRepository } from '../../../infraestructure/MccApiRepository';
-import { CreateMccUseCase } from '../../../application/CreateMccUseCase';
+import { CreateMccUseCase } from '../../../application/useCases/CreateMccUseCase';
 import { IoChevronBack } from 'react-icons/io5';
 
 const repository = new MccApiRepository();

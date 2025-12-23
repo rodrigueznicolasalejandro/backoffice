@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { Service } from '@domain/Service';
 import { ServiceApiRepository } from '@infraestructure/ServiceApiRepository';
-import { GetAllServicesUseCase } from '@application/GetAllServicesUseCase';
-import { DeleteServiceUseCase } from '@application/DeleteServiceUseCase';
+import { GetAllServicesUseCase } from '@application/useCases/GetAllServicesUseCase';
+import { DeleteServiceUseCase } from '@application/useCases/DeleteServiceUseCase';
 
 const repository = new ServiceApiRepository();
 

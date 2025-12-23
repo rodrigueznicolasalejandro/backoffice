@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { Pos } from '@domain/Pos';
 import { PosApiRepository } from '@infraestructure/PosApiRepository';
-import { GetAllPosUseCase } from '@application/GetAllPosUseCase';
-import { DeletePosUseCase } from '@application/DeletePosUseCase';
+import { GetAllPosUseCase } from '@application/useCases/GetAllPosUseCase';
+import { DeletePosUseCase } from '@application/useCases/DeletePosUseCase';
 
 const repository = new PosApiRepository();
 

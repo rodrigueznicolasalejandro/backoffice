@@ -1,6 +1,6 @@
 import { PriceRepository } from '@domain/PriceRepository';
 import { Price } from '@domain/Price';
-import { PriceCreateDto } from './dto/price.dto';
+import { PriceCreateDto } from '../dto/price.dto';
 
 export class CreatePriceUseCase {
   constructor(private repository: PriceRepository) {}
