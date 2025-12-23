@@ -1,17 +1,17 @@
 {
-      "imports": {
-        "@link/backoffice-login": "//localhost:8088/link-backoffice-login.js",
-        "@link/backoffice-bundle": "//localhost:3001/link-backoffice-bundle.js",
-        "@link/backoffice-product": "//localhost:3003/link-backoffice-product.js",
-        "@link/backoffice-mcc": "//localhost:3004/link-backoffice-mcc.js",
-        "@link/backoffice-business-size": "//localhost:3005/link-backoffice-business-size.js",
-        "@link/backoffice-services": "//localhost:3006/link-backoffice-services.js",
-        "@link/backoffice-prices": "//localhost:3007/link-backoffice-prices.js",
-        "@link/backoffice-pos": "//localhost:3008/link-backoffice-pos.js",
-        "@link/backoffice-header": "//localhost:8087/link-backoffice-header.js",
-        "@link/backoffice-menu": "//localhost:8086/link-backoffice-menu.js",
-        "@link/styleguide": "//localhost:9000/public/assets/link-styleguide.js",
-        "@link/root-config": "//localhost:9000/link-root-config.js",
-        "@single-spa/welcome": "https://cdn.jsdelivr.net/npm/single-spa-welcome/dist/single-spa-welcome.min.js"
-      }
+  "imports": {
+    "@link/backoffice-login": "//localhost:8088/link-backoffice-login.js",
+    "@link/backoffice-bundle": "//localhost:3001/link-backoffice-bundle.js",
+    "@link/backoffice-product": "//localhost:3003/link-backoffice-product.js",
+    "@link/backoffice-mcc": "//localhost:3004/link-backoffice-mcc.js",
+    "@link/backoffice-business-size": "//localhost:3005/link-backoffice-business-size.js",
+    "@link/backoffice-services": "//localhost:3006/link-backoffice-services.js",
+    "@link/backoffice-prices": "//localhost:3007/link-backoffice-prices.js",
+    "@link/backoffice-pos": "//localhost:3008/link-backoffice-pos.js",
+    "@link/backoffice-header": "//localhost:8087/link-backoffice-header.js",
+    "@link/backoffice-menu": "//localhost:8086/link-backoffice-menu.js",
+    "@link/styleguide": "//localhost:9000/public/assets/link-styleguide.js",
+    "@link/root-config": "//localhost:9000/link-root-config.js",
+    "@single-spa/welcome": "https://cdn.jsdelivr.net/npm/single-spa-welcome/dist/single-spa-welcome.min.js"
+  }
 }

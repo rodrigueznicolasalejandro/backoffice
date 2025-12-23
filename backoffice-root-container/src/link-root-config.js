@@ -17,12 +17,12 @@ if (typeof window !== "undefined") {
 
 // Función para verificar si el usuario está autenticado
 function isUserAuthenticated() {
-  const token = localStorage.getItem('jwt_token');
+  const token = localStorage.getItem("jwt_token");
   if (!token) return false;
 
   try {
     // Decodificar el token JWT para verificar expiración
-    const payload = JSON.parse(atob(token.split('.')[1]));
+    const payload = JSON.parse(atob(token.split(".")[1]));
     const currentTime = Math.floor(Date.now() / 1000);
     return payload.exp > currentTime;
   } catch (error) {
@@ -46,7 +46,6 @@ const applications = constructApplications({
 const layoutEngine = constructLayoutEngine({ routes, applications });
 
 applications.forEach((app) => {
-  // console.log(`🚀 Registrando microfrontend:`,app);
   registerApplication(app);
 });
 layoutEngine.activate();
@@ -56,21 +55,23 @@ start();
 window.addEventListener("single-spa:before-routing-event", (evt) => {
   const { newUrl } = evt.detail;
   const newPath = new URL(newUrl).pathname;
-  
+
   // Rutas protegidas que requieren autenticación
-  const protectedRoutes = ['/bo'];
-  const isProtectedRoute = protectedRoutes.some(route => newPath.startsWith(route));
-  
+  const protectedRoutes = ["/bo"];
+  const isProtectedRoute = protectedRoutes.some((route) =>
+    newPath.startsWith(route)
+  );
+
   // Si es una ruta protegida y el usuario no está autenticado, cancelar y redirigir
   if (isProtectedRoute && !isUserAuthenticated()) {
     evt.detail.cancelNavigation();
-    navigateToUrl('/auth');
+    navigateToUrl("/auth");
   }
-  
+
   // Si es la ruta de auth y el usuario ya está autenticado, redirigir al dashboard
-  if (newPath === '/auth' && isUserAuthenticated()) {
+  if (newPath === "/auth" && isUserAuthenticated()) {
     evt.detail.cancelNavigation();
-    navigateToUrl('/bo/products');
+    navigateToUrl("/bo/products");
   }
 });
 

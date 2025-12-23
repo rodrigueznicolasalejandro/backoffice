@@ -1,34 +1,34 @@
-import React, { useState, FormEvent } from 'react';
+import React, { useState, FormEvent } from "react";
 // Update the import path below to the correct relative path if the file exists elsewhere
-import { HttpAuthRepository } from '../../../infrastructure/http/repositories/auth.adapter';
-import { LoginUseCase } from '@application/usecases/login.usecase';
-import './Login.css';
+import { HttpAuthRepository } from "../../../infrastructure/http/repositories/auth.adapter";
+import { LoginUseCase } from "@application/usecases/login.usecase";
+import "./Login.css";
 
 const authRepository = new HttpAuthRepository();
 const loginUseCase = new LoginUseCase(authRepository);
 
 const Login: React.FC = () => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    setError('');
+    setError("");
     setLoading(true);
 
     try {
       const { user, token } = await loginUseCase.execute(username, password);
-      
+
       // Save to localStorage
-      localStorage.setItem('jwt_token', token);
-      localStorage.setItem('user', JSON.stringify(user));
-      
+      localStorage.setItem("jwt_token", token);
+      localStorage.setItem("user", JSON.stringify(user));
+
       // Navigate to dashboard
-      window.location.href = '/bo/products';
+      window.location.href = "/bo/products";
     } catch (err: any) {
-      setError(err.message || 'Login failed');
+      setError(err.message || "Login failed");
     } finally {
       setLoading(false);
     }
@@ -76,7 +76,7 @@ const Login: React.FC = () => {
           </div>
 
           <button type="submit" className="login-button" disabled={loading}>
-            {loading ? 'Iniciando sesión...' : 'Iniciar Sesión'}
+            {loading ? "Iniciando sesión..." : "Iniciar Sesión"}
           </button>
         </form>
 

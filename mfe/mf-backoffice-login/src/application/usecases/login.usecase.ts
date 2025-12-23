@@ -4,7 +4,10 @@ import { User } from "@domain/entities/user.entity";
 export class LoginUseCase {
   constructor(private authRepository: AuthRepository) {}
 
-  async execute(username: string, password: string): Promise<{ user: User; token: string }> {
+  async execute(
+    username: string,
+    password: string,
+  ): Promise<{ user: User; token: string }> {
     if (!username || !password) {
       throw new Error("Username and password are required");
     }
