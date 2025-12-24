@@ -1,10 +1,10 @@
 import { MccViewDto } from "@application/dto/mccView.dto";
-import { GetMccUseCase } from "@application/useCases/mcc/getMccSize.uc";
-import { HttpMccRepository } from "@infraestructure/http/repositories/mcc.adapter";
+import { GetAllMccsUseCase } from "@application/useCases/mcc/GetAllMccsUseCase";
+import { HttpMccRepository } from "@infrastructure/http/repositories/mcc.adapter";
 
 
-const getMccUseCase = new GetMccUseCase(new HttpMccRepository());
+const getAllMccsUseCase = new GetAllMccsUseCase(new HttpMccRepository());
 
 export async function getMccs(): Promise<MccViewDto[]> {
-    return await getMccUseCase.execute();
+    return await getAllMccsUseCase.execute();
 }

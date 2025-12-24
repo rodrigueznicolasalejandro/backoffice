@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import { Pos } from '@domain/Pos';
-import { PosApiRepository } from '@infraestructure/PosApiRepository';
+import { Pos } from '@domain/entities/Pos';
+import { PosApiRepository } from '@infrastructure/http/repositories/PosApiRepository';
 import { GetAllPosUseCase } from '@application/useCases/GetAllPosUseCase';
 import { DeletePosUseCase } from '@application/useCases/DeletePosUseCase';
 

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import PriceForm from '../../components/PriceForm';
-import { PriceApiRepository } from '../../../infraestructure/PriceApiRepository';
+import { PriceApiRepository } from '../../../infrastructure/http/repositories/PriceApiRepository';
 import { CreatePriceUseCase } from '../../../application/useCases/CreatePriceUseCase';
 import { IoChevronBack } from 'react-icons/io5';
 

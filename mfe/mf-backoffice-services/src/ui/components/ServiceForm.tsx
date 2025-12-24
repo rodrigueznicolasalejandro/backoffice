@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import { Service } from '@domain/Service';
+import { Service } from '@domain/entities/Service';
 import { AiOutlineLoading3Quarters } from 'react-icons/ai';
 
 interface ServiceFormProps {

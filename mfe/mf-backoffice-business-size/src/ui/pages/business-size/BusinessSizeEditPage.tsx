@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import BusinessSizeForm from '../../components/BusinessSizeForm';
-import { BusinessSizeApiRepository } from '../../../infraestructure/BusinessSizeApiRepository';
+import { BusinessSizeApiRepository } from '../../../infrastructure/http/repositories/BusinessSizeApiRepository';
 import { UpdateBusinessSizeUseCase } from '../../../application/useCases/UpdateBusinessSizeUseCase';
 import { GetBusinessSizeByIdUseCase } from '../../../application/useCases/GetBusinessSizeByIdUseCase';
 import { IoChevronBack } from 'react-icons/io5';

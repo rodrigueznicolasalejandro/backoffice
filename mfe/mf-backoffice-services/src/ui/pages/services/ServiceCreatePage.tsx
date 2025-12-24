@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ServiceForm from '../../components/ServiceForm';
-import { ServiceApiRepository } from '../../../infraestructure/ServiceApiRepository';
+import { ServiceApiRepository } from '../../../infrastructure/http/repositories/ServiceApiRepository';
 import { CreateServiceUseCase } from '../../../application/useCases/CreateServiceUseCase';
 import { IoChevronBack } from 'react-icons/io5';
 

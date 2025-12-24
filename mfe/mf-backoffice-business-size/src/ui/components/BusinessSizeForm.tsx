@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import { BusinessSize } from '@domain/BusinessSize';
+import { BusinessSize } from '@domain/entities/BusinessSize';
 import { AiOutlineLoading3Quarters } from 'react-icons/ai';
 
 interface BusinessSizeFormProps {

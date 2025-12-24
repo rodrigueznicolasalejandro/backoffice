@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
-import { MccApiRepository } from '@infraestructure/MccApiRepository';
+import { MccApiRepository } from '@infrastructure/http/repositories/MccApiRepository';
 import { GetAllMccsUseCase } from '@application/useCases/GetAllMccsUseCase';
 import { DeleteMccUseCase } from '@application/useCases/DeleteMccUseCase';
-import { Mcc } from '@domain/Mcc';
+import { Mcc } from '@domain/entities/Mcc';
 
 const repository = new MccApiRepository();
 const getAllMccsUseCase = new GetAllMccsUseCase(repository);

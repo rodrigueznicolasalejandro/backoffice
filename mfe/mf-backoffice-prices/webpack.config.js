@@ -32,7 +32,7 @@ module.exports = (webpackConfigEnv, argv) => {
     resolve: {
       alias: {
         '@domain': path.resolve(__dirname, 'src/domain'),
-        '@infraestructure': path.resolve(__dirname, 'src/infraestructure'),
+        '@infrastructure': path.resolve(__dirname, 'src/infrastructure'),
         '@application': path.resolve(__dirname, 'src/application'),
         '@ui': path.resolve(__dirname, 'src/ui'),
       },

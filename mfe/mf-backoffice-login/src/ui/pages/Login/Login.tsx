@@ -1,7 +1,7 @@
 import React, { useState, FormEvent } from "react";
 // Update the import path below to the correct relative path if the file exists elsewhere
 import { HttpAuthRepository } from "../../../infrastructure/http/repositories/auth.adapter";
-import { LoginUseCase } from "@application/usecases/login.usecase";
+import { LoginUseCase } from "@application/useCases/LoginUseCase";
 
 const authRepository = new HttpAuthRepository();
 const loginUseCase = new LoginUseCase(authRepository);

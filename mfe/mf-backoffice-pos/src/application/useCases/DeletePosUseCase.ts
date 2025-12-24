@@ -1,4 +1,4 @@
-import { PosRepository } from '@domain/PosRepository';
+import { PosRepository } from '@domain/ports/repositories/PosRepository';
 
 export class DeletePosUseCase {
   constructor(private repository: PosRepository) {}

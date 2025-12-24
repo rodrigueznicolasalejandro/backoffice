@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import { BusinessSize } from '@domain/BusinessSize';
-import { BusinessSizeApiRepository } from '@infraestructure/BusinessSizeApiRepository';
+import { BusinessSize } from '@domain/entities/BusinessSize';
+import { BusinessSizeApiRepository } from '@infrastructure/http/repositories/BusinessSizeApiRepository';
 import { GetAllBusinessSizesUseCase } from '@application/useCases/GetAllBusinessSizesUseCase';
 import { DeleteBusinessSizeUseCase } from '@application/useCases/DeleteBusinessSizeUseCase';
 

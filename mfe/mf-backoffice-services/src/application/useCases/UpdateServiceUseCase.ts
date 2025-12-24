@@ -1,5 +1,5 @@
-import { ServiceRepository } from '@domain/ServiceRepository';
-import { Service, ServiceUpdate } from '@domain/Service';
+import { ServiceRepository } from '@domain/ports/repositories/ServiceRepository';
+import { Service, ServiceUpdate } from '@domain/entities/Service';
 
 export class UpdateServiceUseCase {
   constructor(private readonly repository: ServiceRepository) {}

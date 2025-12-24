@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import { Price } from '@domain/Price';
-import { PriceApiRepository } from '@infraestructure/PriceApiRepository';
+import { Price } from '@domain/entities/Price';
+import { PriceApiRepository } from '@infrastructure/http/repositories/PriceApiRepository';
 import { GetAllPricesUseCase } from '@application/useCases/GetAllPricesUseCase';
 import { DeletePriceUseCase } from '@application/useCases/DeletePriceUseCase';
 

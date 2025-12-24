@@ -1,5 +1,5 @@
-import { MccRepository } from '@domain/MccRepository';
-import { Mcc, MccUpdate } from '@domain/Mcc';
+import { MccRepository } from '@domain/ports/repositories/MccRepository';
+import { Mcc, MccUpdate } from '@domain/entities/Mcc';
 
 export class UpdateMccUseCase {
   constructor(private repository: MccRepository) {}

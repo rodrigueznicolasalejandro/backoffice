@@ -1,5 +1,5 @@
-import { PosRepository } from '@domain/PosRepository';
-import { Pos } from '@domain/Pos';
+import { PosRepository } from '@domain/ports/repositories/PosRepository';
+import { Pos } from '@domain/entities/Pos';
 
 export class GetPosByIdUseCase {
   constructor(private repository: PosRepository) {}

@@ -1,4 +1,4 @@
-import { ServiceRepository } from '@domain/ServiceRepository';
+import { ServiceRepository } from '@domain/ports/repositories/ServiceRepository';
 
 export class DeleteServiceUseCase {
   constructor(private readonly repository: ServiceRepository) {}

@@ -1,4 +1,4 @@
-import { PriceRepository } from '@domain/PriceRepository';
+import { PriceRepository } from '@domain/ports/repositories/PriceRepository';
 
 export class DeletePriceUseCase {
   constructor(private repository: PriceRepository) {}

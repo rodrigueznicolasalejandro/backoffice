@@ -1,4 +1,4 @@
-import { BusinessSizeRepository } from '@domain/BusinessSizeRepository';
+import { BusinessSizeRepository } from '@domain/ports/repositories/BusinessSizeRepository';
 
 export class DeleteBusinessSizeUseCase {
   constructor(private repository: BusinessSizeRepository) {}

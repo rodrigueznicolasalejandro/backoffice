@@ -38,7 +38,7 @@ module.exports = (webpackConfigEnv, argv) => {
         //domain folder
         '@domain': path.resolve(__dirname, 'src/domain'),
         //infraestructure folder
-        '@infraestructure': path.resolve(__dirname, 'src/infraestructure'),
+        '@infrastructure': path.resolve(__dirname, 'src/infrastructure'),
         //application folder
         '@application': path.resolve(__dirname, 'src/application'),
         //ui folder

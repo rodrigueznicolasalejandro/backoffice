@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import { Service } from '@domain/Service';
-import { ServiceApiRepository } from '@infraestructure/ServiceApiRepository';
+import { Service } from '@domain/entities/Service';
+import { ServiceApiRepository } from '@infrastructure/http/repositories/ServiceApiRepository';
 import { GetAllServicesUseCase } from '@application/useCases/GetAllServicesUseCase';
 import { DeleteServiceUseCase } from '@application/useCases/DeleteServiceUseCase';
 

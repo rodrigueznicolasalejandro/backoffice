@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import PosForm from '../../components/PosForm';
-import { PosApiRepository } from '../../../infraestructure/PosApiRepository';
+import { PosApiRepository } from '../../../infrastructure/http/repositories/PosApiRepository';
 import { CreatePosUseCase } from '../../../application/useCases/CreatePosUseCase';
 import { IoChevronBack } from 'react-icons/io5';
 

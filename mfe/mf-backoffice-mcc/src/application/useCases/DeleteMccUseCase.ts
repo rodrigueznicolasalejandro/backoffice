@@ -1,4 +1,4 @@
-import { MccRepository } from '@domain/MccRepository';
+import { MccRepository } from '@domain/ports/repositories/MccRepository';
 
 export class DeleteMccUseCase {
   constructor(private repository: MccRepository) {}

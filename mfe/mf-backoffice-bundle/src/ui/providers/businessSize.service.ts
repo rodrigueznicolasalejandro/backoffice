@@ -1,9 +1,9 @@
 import { BusinessSizeViewDto } from "@application/dto/bussinesSizeView.dto";
-import { GetBusinessSizeUseCase } from "@application/useCases/businessSize/getBusinessSize.uc";
-import { HttpBusinessSizeRepository } from "@infraestructure/http/repositories/businessSize.adapter";
+import { GetAllBusinessSizesUseCase } from "@application/useCases/businessSize/GetAllBusinessSizesUseCase";
+import { HttpBusinessSizeRepository } from "@infrastructure/http/repositories/businessSize.adapter";
 
-const getBusinessSizeUseCase = new GetBusinessSizeUseCase(new HttpBusinessSizeRepository());
+const getAllBusinessSizesUseCase = new GetAllBusinessSizesUseCase(new HttpBusinessSizeRepository());
 
 export async function getBusinessSizes(): Promise<BusinessSizeViewDto[]> {
-    return await getBusinessSizeUseCase.execute();
+    return await getAllBusinessSizesUseCase.execute();
 }

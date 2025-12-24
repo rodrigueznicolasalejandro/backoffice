@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import { Pos } from '@domain/Pos';
+import { Pos } from '@domain/entities/Pos';
 
 interface PosFormProps {
   pos?: Pos | null;

@@ -8,11 +8,11 @@
     "paths": {
       "@ui/*": ["src/ui/*"],
       "@domain/*": ["src/domain/*"],
-      "@infraestructure/*": ["src/infraestructure/*"],
+      "@infrastructure/*": ["src/infrastructure/*"],
       "@application/*": ["src/application/*"]
     }
   },
-  "files": ["src/link-backoffice-mcc.tsx"],
+  "files": ["src/link-backoffice-business-size.tsx"],
   "include": ["src/**/*"],
   "exclude": ["src/**/*.test*"]
 }

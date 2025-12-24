@@ -1,11 +1,11 @@
-import { GetProductsUseCase } from "@application/useCases/getProducts.uc";
-import { HttpProductsRepository } from "@infraestructure/http/repositories/products.adapter";
+import { GetAllProductsUseCase } from "@application/useCases/GetAllProductsUseCase";
+import { HttpProductsRepository } from "@infrastructure/http/repositories/products.adapter";
 import { ProductViewDto } from "@application/dto/productView.dto";
 
-const getProductsUseCase = new GetProductsUseCase(new HttpProductsRepository());
+const getAllProductsUseCase = new GetAllProductsUseCase(new HttpProductsRepository());
 
 export async function getProducts(page: number = 1, limit: number = 10): Promise<{ products: ProductViewDto[], pagination: any }> {
-    return await getProductsUseCase.execute(page, limit);
+    return await getAllProductsUseCase.execute(page, limit);
 }
 
 // Helper para obtener headers con JWT

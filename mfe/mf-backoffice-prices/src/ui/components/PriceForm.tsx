@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Price } from '@domain/Price';
+import { Price } from '@domain/entities/Price';
 import { MdAdd, MdDelete } from 'react-icons/md';
 
 interface PriceFormProps {

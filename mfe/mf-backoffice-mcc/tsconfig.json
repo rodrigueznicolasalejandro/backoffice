@@ -8,7 +8,7 @@
     "paths": {
       "@ui/*": ["src/ui/*"],
       "@domain/*": ["src/domain/*"],
-      "@infraestructure/*": ["src/infraestructure/*"],
+      "@infrastructure/*": ["src/infrastructure/*"],
       "@application/*": ["src/application/*"]
     }
   },

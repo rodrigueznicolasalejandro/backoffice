@@ -1,5 +1,5 @@
-import { BusinessSizeRepository } from '@domain/BusinessSizeRepository';
-import { BusinessSize, BusinessSizeCreate } from '@domain/BusinessSize';
+import { BusinessSizeRepository } from '@domain/ports/repositories/BusinessSizeRepository';
+import { BusinessSize, BusinessSizeCreate } from '@domain/entities/BusinessSize';
 
 export class CreateBusinessSizeUseCase {
   constructor(private repository: BusinessSizeRepository) {}
